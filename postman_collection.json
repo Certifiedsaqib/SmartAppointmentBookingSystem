@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "Smart Appointment Booking System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "register"] }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"Admin@123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "List Providers",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:5000/api/providers", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "providers"] }
+      }
+    },
+    {
+      "name": "Create Provider",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Dr. Ian Parker\",\n  \"specialization\": \"Wellness Coach\",\n  \"email\": \"ian.parker@example.com\",\n  \"phone\": \"+1 555 333 4444\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/providers", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "providers"] }
+      }
+    },
+    {
+      "name": "List Appointments",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:5000/api/appointments", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "appointments"] }
+      }
+    },
+    {
+      "name": "Create Appointment",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Jordan Reed\",\n  \"customerEmail\": \"jordan.reed@example.com\",\n  \"customerPhone\": \"+1 555 777 8888\",\n  \"appointmentDate\": \"2025-12-01T10:00:00.000Z\",\n  \"providerId\": \"{{providerId}}\",\n  \"notes\": \"Initial consultation\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/appointments", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "appointments"] }
+      }
+    }
+  ]
+}
